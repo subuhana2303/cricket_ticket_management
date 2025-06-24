@@ -1,0 +1,46 @@
+🏏 CricketTix - Premium Cricket Ticketing Platform
+====================================================
+
+QUICK START (3 SIMPLE STEPS):
+
+1. Install Python dependencies:
+   pip install -r requirements_local.txt
+
+2. Launch the application:
+   python run_local.py
+
+3. Open your browser and go to:
+   http://localhost:5000
+
+LOGIN CREDENTIALS:
+Admin: admin@cricket.com / admin123
+
+That's it! Your complete cricket ticketing platform is now running locally.
+
+For detailed instructions, see:
+- SETUP_INSTRUCTIONS.md (full setup guide)
+- README_LOCAL.md (complete documentation)
+- DOWNLOAD_PACKAGE.md (package overview)
+
+FEATURES INCLUDED:
+✓ User registration and authentication
+✓ Interactive match browsing with weather forecasts
+✓ Visual seat selection system
+✓ Multiple seating categories (Regular, VIP, Premium)
+✓ Complete booking and payment flow
+✓ PDF ticket generation
+✓ Admin dashboard with analytics
+✓ Loyalty points and membership system
+✓ Pre-loaded sample data (stadiums and matches)
+
+SYSTEM REQUIREMENTS:
+- Python 3.8 or higher
+- Any modern web browser
+- No external database required (uses SQLite)
+
+TROUBLESHOOTING:
+- If you get dependency errors: python -m pip install -r requirements_local.txt
+- If port 5000 is busy: The app will automatically find another port
+- If database issues: Delete cricketTix_local.db and restart
+
+Enjoy your complete CricketTix platform!
