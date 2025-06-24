@@ -189,6 +189,8 @@ This project was developed by:
 ## 📝 License
 This project is licensed under the MIT License.
 See the LICENSE file for more information.
+
+---
 **⭐ Show Your Support**
 _If you found this project helpful or inspiring, please give it a ⭐ on GitHub!_
 
