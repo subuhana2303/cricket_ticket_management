@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Payment - Cricket Tickets{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Booking Summary -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-receipt me-2"></i>
+                        Booking Summary
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>{{ match.team1 }} vs {{ match.team2 }}</h5>
+                            <p class="mb-1">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                {{ match.stadium.name }}, {{ match.stadium.city }}
+                            </p>
+                            <p class="mb-0">
+                                <i class="fas fa-calendar me-2"></i>
+                                {{ match.match_date.strftime('%B %d, %Y at %I:%M %p') }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-end">
+                                <h6>Selected Seats:</h6>
+                                {% for seat in booking_details.seats %}
+                                    <span class="badge bg-secondary me-1">Row {{ seat.row }}-{{ seat.seat }}</span>
+                                {% endfor %}
+                                <div class="mt-2">
+                                    <strong class="fs-4 text-success">${{ "%.2f"|format(booking_details.total_amount) }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Form -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-credit-card me-2"></i>
+                        Payment Details
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Demo Mode:</strong> This is a simulation. No real payment will be processed.
+                    </div>
+                    
+                    <form id="payment-form" method="POST" action="{{ url_for('process_payment') }}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="card-name" class="form-label">Cardholder Name</label>
+                                <input type="text" class="form-control" id="card-name" value="John Doe" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="card-number" class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="card-number" value="4111 1111 1111 1111" pattern="[0-9\s]{13,19}" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="expiry-month" class="form-label">Expiry Month</label>
+                                <select class="form-select" id="expiry-month" required>
+                                    <option value="12" selected>12</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="expiry-year" class="form-label">Expiry Year</label>
+                                <select class="form-select" id="expiry-year" required>
+                                    <option value="2025" selected>2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" value="123" pattern="[0-9]{3,4}" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="billing-email" class="form-label">Billing Email</label>
+                            <input type="email" class="form-control" id="billing-email" value="{{ current_user.email }}" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{{ url_for('seats', match_id=match.id) }}" class="btn btn-secondary w-100">
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                    Back to Seats
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-success w-100" id="pay-btn">
+                                    <i class="fas fa-lock me-2"></i>
+                                    Pay ${{ "%.2f"|format(booking_details.total_amount) }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.getElementById('payment-form').addEventListener('submit', function(e) {
+    const payBtn = document.getElementById('pay-btn');
+    payBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+    payBtn.disabled = true;
+});
+
+// Format card number input
+document.getElementById('card-number').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    e.target.value = formattedValue;
+});
+</script>
+{% endblock %}

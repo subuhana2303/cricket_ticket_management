@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}My Tickets - Cricket Tickets{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">
+                <i class="fas fa-ticket-alt me-2"></i>
+                My Tickets
+            </h1>
+        </div>
+    </div>
+    
+    {% if bookings %}
+        <div class="row">
+            {% for booking in bookings %}
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-success text-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-cricket-bat-ball me-2"></i>
+                                    Ticket #{{ booking.id }}
+                                </h6>
+                                <span class="badge bg-light text-success">{{ booking.payment_status.title() }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{{ booking.match.team1 }} vs {{ booking.match.team2 }}</h5>
+                            
+                            <div class="mb-2">
+                                <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                <strong>{{ booking.match.stadium.name }}</strong>
+                                <div class="text-muted ms-3">{{ booking.match.stadium.city }}</div>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <i class="fas fa-calendar text-info me-2"></i>
+                                <strong>{{ booking.match.match_date.strftime('%B %d, %Y') }}</strong>
+                                <div class="text-muted ms-3">{{ booking.match.match_date.strftime('%I:%M %p') }}</div>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <i class="fas fa-couch text-warning me-2"></i>
+                                <strong>Row {{ booking.seat_row }}, Seat {{ booking.seat_number }}</strong>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <i class="fas fa-dollar-sign text-success me-2"></i>
+                                <strong class="text-success">${{ "%.2f"|format(booking.total_amount) }}</strong>
+                            </div>
+                            
+                            <div class="text-muted small">
+                                <i class="fas fa-clock me-1"></i>
+                                Booked on {{ booking.booking_date.strftime('%B %d, %Y') }}
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer bg-transparent">
+                            <a href="{{ url_for('download_ticket', booking_id=booking.id) }}" class="btn btn-primary w-100" target="_blank">
+                                <i class="fas fa-download me-2"></i>
+                                Download PDF Ticket
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-ticket-alt fa-4x text-muted mb-3"></i>
+                    <h3 class="text-muted">No Tickets Found</h3>
+                    <p class="text-muted">You haven't booked any tickets yet.</p>
+                    <a href="{{ url_for('matches') }}" class="btn btn-primary">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Browse Matches
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

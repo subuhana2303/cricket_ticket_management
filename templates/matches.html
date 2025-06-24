@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Matches - Cricket Tickets{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    Upcoming Matches
+                </h1>
+            </div>
+        </div>
+    </div>
+    
+    {% if matches %}
+        <div class="row">
+            {% for match in matches %}
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card h-100 shadow-sm hover-shadow">
+                        <div class="card-header bg-primary text-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-cricket-bat-ball me-2"></i>
+                                    {{ match.team1 }} vs {{ match.team2 }}
+                                </h5>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                    <strong>{{ match.stadium.name }}</strong>
+                                </div>
+                                <div class="text-muted ms-3">
+                                    {{ match.stadium.city }} • Capacity: {{ "{:,}".format(match.stadium.capacity) }}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-calendar text-info me-2"></i>
+                                    <strong>{{ match.match_date.strftime('%B %d, %Y') }}</strong>
+                                </div>
+                                <div class="text-muted ms-3">
+                                    {{ match.match_date.strftime('%I:%M %p') }}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-dollar-sign text-success me-2"></i>
+                                    <strong class="text-success fs-5">${{ "%.2f"|format(match.ticket_price) }}</strong>
+                                    <span class="text-muted ms-2">per ticket</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer bg-transparent">
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('seats', match_id=match.id) }}" class="btn btn-primary w-100">
+                                    <i class="fas fa-eye me-2"></i>View Seats
+                                </a>
+                            {% else %}
+                                <a href="{{ url_for('login') }}" class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login to Book
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
+                    <h3 class="text-muted">No Upcoming Matches</h3>
+                    <p class="text-muted">Check back soon for new match announcements!</p>
+                    {% if current_user.is_authenticated and current_user.is_admin %}
+                        <a href="{{ url_for('admin_matches') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Add Match
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.hover-shadow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+</style>
+{% endblock %}

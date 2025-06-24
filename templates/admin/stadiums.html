@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Stadiums - Admin{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>
+                    <i class="fas fa-building me-2"></i>
+                    Manage Stadiums
+                </h1>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStadiumModal">
+                    <i class="fas fa-plus me-2"></i>
+                    Add Stadium
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    {% if stadiums %}
+        <div class="row">
+            {% for stadium in stadiums %}
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-building me-2"></i>
+                                {{ stadium.name }}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                <strong>{{ stadium.city }}</strong>
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-users text-primary me-2"></i>
+                                <strong>Capacity:</strong> {{ "{:,}".format(stadium.capacity) }}
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-th text-success me-2"></i>
+                                <strong>Layout:</strong> {{ stadium.rows }} rows × {{ stadium.seats_per_row }} seats
+                            </div>
+                            <div class="text-muted small">
+                                <i class="fas fa-clock me-1"></i>
+                                Created: {{ stadium.created_at.strftime('%B %d, %Y') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-building fa-4x text-muted mb-3"></i>
+                    <h3 class="text-muted">No Stadiums Found</h3>
+                    <p class="text-muted">Add your first stadium to get started.</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStadiumModal">
+                        <i class="fas fa-plus me-2"></i>
+                        Add Stadium
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Add Stadium Modal -->
+<div class="modal fade" id="addStadiumModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-plus me-2"></i>
+                    Add New Stadium
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('add_stadium') }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Stadium Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="city" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="capacity" class="form-label">Total Capacity</label>
+                        <input type="number" class="form-control" id="capacity" name="capacity" required min="1000">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="rows" class="form-label">Number of Rows</label>
+                                <input type="number" class="form-control" id="rows" name="rows" required min="10" max="100">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="seats_per_row" class="form-label">Seats per Row</label>
+                                <input type="number" class="form-control" id="seats_per_row" name="seats_per_row" required min="20" max="100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>
+                        Add Stadium
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

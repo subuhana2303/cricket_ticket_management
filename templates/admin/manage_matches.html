@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Matches - Admin{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    Manage Matches
+                </h1>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMatchModal">
+                    <i class="fas fa-plus me-2"></i>
+                    Add Match
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    {% if matches %}
+        <div class="row">
+            {% for match in matches %}
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-cricket-bat-ball me-2"></i>
+                                {{ match.team1 }} vs {{ match.team2 }}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                <strong>{{ match.stadium.name }}</strong>
+                                <div class="text-muted ms-3">{{ match.stadium.city }}</div>
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-calendar text-info me-2"></i>
+                                <strong>{{ match.match_date.strftime('%B %d, %Y') }}</strong>
+                                <div class="text-muted ms-3">{{ match.match_date.strftime('%I:%M %p') }}</div>
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-dollar-sign text-success me-2"></i>
+                                <strong>${{ "%.2f"|format(match.ticket_price) }}</strong> per ticket
+                            </div>
+                            <div class="text-muted small">
+                                <i class="fas fa-clock me-1"></i>
+                                Created: {{ match.created_at.strftime('%B %d, %Y') }}
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="{{ url_for('seats', match_id=match.id) }}" class="btn btn-outline-primary btn-sm w-100">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <span class="badge bg-info w-100 py-2">
+                                        {{ match.bookings | length }} bookings
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-calendar-alt fa-4x text-muted mb-3"></i>
+                    <h3 class="text-muted">No Matches Found</h3>
+                    <p class="text-muted">Add your first match to get started.</p>
+                    {% if not stadiums %}
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            You need to add at least one stadium before creating matches.
+                            <a href="{{ url_for('admin_stadiums') }}" class="btn btn-warning btn-sm ms-2">
+                                Add Stadium
+                            </a>
+                        </div>
+                    {% else %}
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMatchModal">
+                            <i class="fas fa-plus me-2"></i>
+                            Add Match
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Add Match Modal -->
+{% if stadiums %}
+<div class="modal fade" id="addMatchModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-plus me-2"></i>
+                    Add New Match
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('add_match') }}">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="team1" class="form-label">Team 1</label>
+                                <input type="text" class="form-control" id="team1" name="team1" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="team2" class="form-label">Team 2</label>
+                                <input type="text" class="form-control" id="team2" name="team2" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="stadium_id" class="form-label">Stadium</label>
+                        <select class="form-select" id="stadium_id" name="stadium_id" required>
+                            <option value="">Select a stadium</option>
+                            {% for stadium in stadiums %}
+                                <option value="{{ stadium.id }}">{{ stadium.name }}, {{ stadium.city }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="match_date" class="form-label">Match Date & Time</label>
+                        <input type="datetime-local" class="form-control" id="match_date" name="match_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ticket_price" class="form-label">Ticket Price ($)</label>
+                        <input type="number" step="0.01" class="form-control" id="ticket_price" name="ticket_price" required min="10">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>
+                        Add Match
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Set minimum date to today
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('match_date');
+    if (dateInput) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        dateInput.min = now.toISOString().slice(0, 16);
+    }
+});
+</script>
+{% endblock %}
