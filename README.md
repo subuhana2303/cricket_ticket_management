@@ -109,7 +109,7 @@ CricketTicketManager/
 
 ### Steps
 
-```bash
+
 # Clone the repo
 git clone https://github.com/yourusername/CricketTix.git
 cd CricketTix
