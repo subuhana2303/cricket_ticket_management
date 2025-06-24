@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Cricket Ticket Management - Home{% endblock %}
+{% block title %}CricketTix - Premium Cricket Ticketing Platform{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -11,9 +11,9 @@
                 <div class="text-center">
                     <h1 class="display-4 fw-bold">
                         <i class="fas fa-cricket-bat-ball fa-2x mb-3"></i><br>
-                        Welcome to Cricket Tickets
+                        Welcome to <span class="text-warning">Cricket</span>Tix
                     </h1>
-                    <p class="lead">Book your cricket match tickets online with ease. Secure payments, instant confirmation, and digital tickets.</p>
+                    <p class="lead">Premium cricket ticketing with live scores, loyalty rewards, weather forecasts, and smart seat recommendations. Experience cricket like never before!</p>
                     {% if not current_user.is_authenticated %}
                         <div class="mt-4">
                             <a href="{{ url_for('register') }}" class="btn btn-light btn-lg me-3">
@@ -35,40 +35,76 @@
         </div>
     </div>
     
-    <!-- Features Section -->
+    <!-- Premium Features Section -->
     <div class="row mb-5">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm premium-feature">
                 <div class="card-body text-center p-4">
-                    <div class="text-primary mb-3">
-                        <i class="fas fa-ticket-alt fa-3x"></i>
+                    <div class="text-danger mb-3">
+                        <i class="fas fa-chart-line fa-3x"></i>
                     </div>
-                    <h5 class="card-title">Easy Booking</h5>
-                    <p class="card-text">Browse matches, select your seats, and book tickets in just a few clicks.</p>
+                    <h5 class="card-title">Live Match Scores</h5>
+                    <p class="card-text">Real-time score updates and ball-by-ball commentary during matches.</p>
                 </div>
             </div>
         </div>
         
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm premium-feature">
                 <div class="card-body text-center p-4">
-                    <div class="text-success mb-3">
-                        <i class="fas fa-shield-alt fa-3x"></i>
+                    <div class="text-warning mb-3">
+                        <i class="fas fa-star fa-3x"></i>
                     </div>
-                    <h5 class="card-title">Secure Payments</h5>
-                    <p class="card-text">Safe and secure payment processing with instant confirmation.</p>
+                    <h5 class="card-title">Loyalty Rewards</h5>
+                    <p class="card-text">Earn points with every booking and unlock exclusive benefits and discounts.</p>
                 </div>
             </div>
         </div>
         
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm premium-feature">
                 <div class="card-body text-center p-4">
                     <div class="text-info mb-3">
-                        <i class="fas fa-download fa-3x"></i>
+                        <i class="fas fa-cloud-sun fa-3x"></i>
                     </div>
-                    <h5 class="card-title">Digital Tickets</h5>
-                    <p class="card-text">Download your tickets as PDF and show them on your mobile device.</p>
+                    <h5 class="card-title">Weather Forecast</h5>
+                    <p class="card-text">Smart weather predictions for match days with rain alerts and recommendations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm premium-feature">
+                <div class="card-body text-center p-4">
+                    <div class="text-success mb-3">
+                        <i class="fas fa-brain fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">Smart Recommendations</h5>
+                    <p class="card-text">AI-powered seat suggestions based on your preferences and viewing history.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm premium-feature">
+                <div class="card-body text-center p-4">
+                    <div class="text-primary mb-3">
+                        <i class="fas fa-qrcode fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">QR Code Entry</h5>
+                    <p class="card-text">Fast stadium entry with contactless QR code scanning and digital verification.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm premium-feature">
+                <div class="card-body text-center p-4">
+                    <div class="text-purple mb-3">
+                        <i class="fas fa-crown fa-3x"></i>
+                    </div>
+                    <h5 class="card-title">VIP Experience</h5>
+                    <p class="card-text">Premium seating with exclusive amenities, priority entry, and concierge services.</p>
                 </div>
             </div>
         </div>

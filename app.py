@@ -64,42 +64,73 @@ with app.app_context():
     if not models.Stadium.query.first():
         from datetime import datetime, timedelta
         
-        # Create stadiums
+        # Create stadiums with enhanced features
         stadium1 = models.Stadium(
             name='Lord\'s Cricket Ground',
             city='London',
+            country='England',
             capacity=30000,
             rows=30,
-            seats_per_row=50
+            seats_per_row=50,
+            pitch_type='Batting',
+            amenities='["Premium Restaurant", "VIP Lounge", "Museum", "Gift Shop", "Wi-Fi", "Parking"]'
         )
         stadium2 = models.Stadium(
             name='Melbourne Cricket Ground',
-            city='Melbourne',
+            city='Melbourne', 
+            country='Australia',
             capacity=100000,
             rows=40,
-            seats_per_row=60
+            seats_per_row=60,
+            pitch_type='Balanced',
+            amenities='["Food Courts", "Sports Bar", "Merchandise Store", "Family Zone", "Medical Center", "Disabled Access"]'
         )
         
         db.session.add_all([stadium1, stadium2])
         db.session.commit()
         
-        # Create matches
+        # Create matches with enhanced features
         match1 = models.Match(
             team1='England',
             team2='Australia',
             stadium_id=stadium1.id,
             match_date=datetime.now() + timedelta(days=7),
-            ticket_price=75.00
+            match_type='ODI',
+            tournament='Cricket World Cup 2025',
+            ticket_price=75.00,
+            vip_price=150.00,
+            premium_price=250.00,
+            weather_forecast='Sunny, 26°C',
+            status='Upcoming'
         )
         match2 = models.Match(
             team1='India',
             team2='Pakistan',
             stadium_id=stadium2.id,
             match_date=datetime.now() + timedelta(days=14),
-            ticket_price=85.00
+            match_type='T20',
+            tournament='Asia Cup 2025',
+            ticket_price=85.00,
+            vip_price=170.00,
+            premium_price=300.00,
+            weather_forecast='Partly cloudy, 24°C',
+            status='Upcoming'
+        )
+        match3 = models.Match(
+            team1='New Zealand',
+            team2='South Africa',
+            stadium_id=stadium1.id,
+            match_date=datetime.now() + timedelta(days=21),
+            match_type='Test',
+            tournament='Test Championship',
+            ticket_price=65.00,
+            vip_price=130.00,
+            premium_price=200.00,
+            weather_forecast='Clear skies, 28°C',
+            status='Upcoming'
         )
         
-        db.session.add_all([match1, match2])
+        db.session.add_all([match1, match2, match3])
         db.session.commit()
         logging.info("Sample stadiums and matches created")
 

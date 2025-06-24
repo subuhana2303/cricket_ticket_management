@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Matches - Cricket Tickets{% endblock %}
+{% block title %}Matches - CricketTix{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -26,7 +26,13 @@
                                     <i class="fas fa-cricket-bat-ball me-2"></i>
                                     {{ match.team1 }} vs {{ match.team2 }}
                                 </h5>
+                                {% if match.match_type %}
+                                    <span class="badge bg-warning text-dark">{{ match.match_type }}</span>
+                                {% endif %}
                             </div>
+                            {% if match.tournament %}
+                                <small class="opacity-75">{{ match.tournament }}</small>
+                            {% endif %}
                         </div>
                         
                         <div class="card-body">
@@ -53,10 +59,27 @@
                             <div class="mb-3">
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-dollar-sign text-success me-2"></i>
-                                    <strong class="text-success fs-5">${{ "%.2f"|format(match.ticket_price) }}</strong>
-                                    <span class="text-muted ms-2">per ticket</span>
+                                    <div>
+                                        <strong class="text-success fs-5">${{ "%.2f"|format(match.ticket_price) }}</strong>
+                                        <span class="text-muted ms-1">Regular</span>
+                                        {% if match.vip_price %}
+                                            <br><small class="text-warning">${{ "%.2f"|format(match.vip_price) }} VIP</small>
+                                        {% endif %}
+                                        {% if match.premium_price %}
+                                            <br><small class="text-info">${{ "%.2f"|format(match.premium_price) }} Premium</small>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
+                            
+                            {% if match.weather_forecast %}
+                            <div class="mb-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-cloud-sun text-info me-2"></i>
+                                    <small class="text-muted">{{ match.weather_forecast }}</small>
+                                </div>
+                            </div>
+                            {% endif %}
                         </div>
                         
                         <div class="card-footer bg-transparent">

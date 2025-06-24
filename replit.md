@@ -1,16 +1,17 @@
-# Cricket Ticket Management System
+# CricketTix - Premium Cricket Ticketing Platform
 
 ## Overview
-A comprehensive full-stack cricket ticket booking web application built with Python Flask, SQLite database, and modern responsive design using Bootstrap CSS. The system provides user authentication, interactive seat selection, secure booking processes, and PDF ticket generation for users, along with a comprehensive admin dashboard for managing venues, matches, and analytics.
+CricketTix is a next-generation cricket ticketing platform that revolutionizes how fans experience cricket matches. Built with cutting-edge technology using Python Flask and PostgreSQL, it combines traditional ticketing with modern features like live scores, loyalty rewards, weather forecasts, smart seat recommendations, QR code entry, and premium experiences. The platform offers multiple seating categories, dynamic pricing, and a comprehensive admin dashboard with advanced analytics.
 
 ## System Architecture
 
 ### Backend Architecture
-- **Framework**: Python Flask with SQLAlchemy ORM
-- **Database**: SQLite (file-based, deployment-friendly)
-- **Authentication**: Flask-Login with bcrypt password hashing
-- **Session Management**: Flask built-in sessions with custom secret key
-- **Database Models**: SQLAlchemy with relationship mapping
+- **Framework**: Python Flask with modular architecture and SQLAlchemy ORM
+- **Database**: PostgreSQL with advanced features (loyalty points, reviews, notifications)
+- **Authentication**: Flask-Login with Werkzeug security and bcrypt password hashing
+- **Session Management**: Flask built-in sessions with secure configuration
+- **Database Models**: Enhanced SQLAlchemy models with JSON fields and advanced relationships
+- **Features**: Dynamic pricing, loyalty rewards, weather integration, QR code generation
 
 ### Frontend Architecture
 - **UI Framework**: Bootstrap CSS with Replit Dark Theme
@@ -123,7 +124,16 @@ A comprehensive full-stack cricket ticket booking web application built with Pyt
 - **Responsive Design**: Mobile-optimized interface
 
 ## Changelog
-- June 24, 2025. Initial setup
+- June 24, 2025: Enhanced to CricketTix premium platform with advanced features
+  - Added PostgreSQL database with enhanced schema
+  - Implemented loyalty rewards and membership tiers
+  - Added weather forecasts and match insights
+  - Enhanced UI with premium features showcase
+  - Added multiple seating categories (Regular, VIP, Premium)
+  - Implemented QR code entry system
+  - Added match reviews and rating system
+  - Enhanced admin dashboard with advanced analytics
+- June 24, 2025: Initial cricket ticket management system setup
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.

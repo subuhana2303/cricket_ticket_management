@@ -1,11 +1,12 @@
-# 🏏 Cricket Ticket Management System
+# 🏏 CricketTix - Premium Cricket Ticketing Platform
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen?style=for-the-badge)](https://your-replit-url.replit.app)
 [![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-2.3-red?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql)](https://postgresql.org)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com)
 
-A comprehensive full-stack cricket ticket booking web application built with Python Flask, PostgreSQL database, and modern responsive design using Bootstrap CSS. This signature-level portfolio project features user authentication, interactive seat selection, secure booking processes, PDF ticket generation, and a comprehensive admin dashboard for managing venues, matches, and analytics.
+CricketTix is a next-generation cricket ticketing platform that revolutionizes how fans experience cricket matches. Built with cutting-edge technology, it combines traditional ticketing with modern features like live scores, loyalty rewards, weather forecasts, smart seat recommendations, and premium experiences.
 
 ## 🚀 Live Demo
 
@@ -17,23 +18,27 @@ A comprehensive full-stack cricket ticket booking web application built with Pyt
   - Password: `admin123`
 - **User Registration**: Create your own account or use the admin credentials to access the full dashboard
 
-## ✨ Key Features
+## ✨ Revolutionary Features
 
-### 👤 User Features
-- **🔐 Secure Authentication**: Registration and login with bcrypt password hashing
-- **🏏 Match Browsing**: View upcoming cricket matches with comprehensive details
-- **🎯 Interactive Seat Selection**: Real-time seat availability with visual stadium grid
-- **💳 Secure Booking Process**: Session-based booking with validation and conflict prevention
-- **💰 Payment Simulation**: Complete payment flow demonstration
-- **🎫 PDF Ticket Generation**: Professional downloadable PDF tickets with ReportLab
-- **📋 Booking History**: Complete dashboard of user's ticket purchases
+### 🎯 Smart Ticketing Experience
+- **🧠 AI-Powered Recommendations**: Smart seat suggestions based on user preferences and viewing history
+- **📊 Live Match Integration**: Real-time scores, ball-by-ball commentary, and match updates
+- **🌤️ Weather Intelligence**: Smart weather forecasts with rain alerts and match day recommendations
+- **⭐ Loyalty Rewards Program**: Earn points with every booking, unlock exclusive benefits and discounts
+- **🏆 Membership Tiers**: Bronze, Silver, Gold, and Platinum membership levels with progressive benefits
 
-### 🛠️ Admin Features
-- **📊 Analytics Dashboard**: Comprehensive statistics and revenue tracking
-- **🏟️ Stadium Management**: Add and configure cricket venues with custom seating layouts
-- **📅 Match Management**: Create and schedule matches with pricing
-- **📈 Visual Analytics**: Interactive charts showing booking patterns and revenue
-- **👥 User Management**: Monitor user registrations and booking activity
+### 💎 Premium Features
+- **🎫 Multi-Category Seating**: Regular, VIP, and Premium seating options with exclusive amenities
+- **📱 QR Code Entry**: Contactless stadium entry with digital verification
+- **💰 Dynamic Pricing**: Smart pricing based on demand, match importance, and weather conditions
+- **🔔 Smart Notifications**: Personalized alerts for favorite teams, match updates, and exclusive offers
+- **📝 Match Reviews**: Post-match rating system for venues and overall experience
+
+### 🏟️ Stadium Intelligence
+- **🎯 Venue Insights**: Detailed stadium information with amenities, pitch conditions, and historical data
+- **🗺️ Interactive Seat Maps**: Visual stadium layout with real-time availability and pricing
+- **🍽️ Amenity Information**: Comprehensive details about food courts, parking, Wi-Fi, and accessibility
+- **📍 Location Services**: Integrated maps, directions, and local area information
 
 ## 🏗️ Technical Architecture
 
@@ -61,7 +66,7 @@ A comprehensive full-stack cricket ticket booking web application built with Pyt
 ## 📁 Project Structure
 
 ```
-cricket-ticket-system/
+CricketTix/
 ├── app.py                  # Flask application configuration
 ├── main.py                # Application entry point
 ├── models.py              # Database models (User, Stadium, Match, Booking)
@@ -115,8 +120,8 @@ Comprehensive analytics dashboard showing booking statistics, revenue tracking, 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/cricket-ticket-system.git
-   cd cricket-ticket-system
+   git clone https://github.com/yourusername/CricketTix.git
+   cd CricketTix
    ```
 
 2. **Install dependencies**
