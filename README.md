@@ -37,6 +37,7 @@ CricketTix is a next-generation cricket ticketing platform that revolutionizes h
 ## 🚀 Live Demo
 
 🌐 **Live video**: [click here to watch](https://drive.google.com/file/d/15AAF1ic2W0d5k2iKRcfWkU8xulglvVDT/view?usp=drivesdk)
+
 🖼️ **Screenshots outputs are:**
 - home pages
 ![homepages](2025-06-24.png)
