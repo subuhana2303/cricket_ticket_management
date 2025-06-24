@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rows: {{ stadium.rows }},
         seatsPerRow: {{ stadium.seats_per_row }},
         ticketPrice: {{ match.ticket_price }},
-        bookedSeats: {{ booked_seats | tojsonfilter }}
+        bookedSeats: {{ booked_seats | tojson }}
     });
 });
 </script>

@@ -78,7 +78,7 @@ def seats(match_id):
     
     # Get booked seats
     bookings = Booking.query.filter_by(match_id=match_id).all()
-    booked_seats = {(booking.seat_row, booking.seat_number) for booking in bookings}
+    booked_seats = [[booking.seat_row, booking.seat_number] for booking in bookings]
     
     return render_template('seats.html', match=match, stadium=stadium, booked_seats=booked_seats)
 

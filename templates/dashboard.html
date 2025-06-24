@@ -182,7 +182,7 @@
 <script>
 // Booking Statistics Chart
 const ctx = document.getElementById('bookingChart').getContext('2d');
-const bookingData = {{ booking_stats | tojsonfilter }};
+const bookingData = {{ booking_stats | tojson }};
 
 const labels = bookingData.map(item => `${item[0]} vs ${item[1]}`);
 const data = bookingData.map(item => item[2]);
