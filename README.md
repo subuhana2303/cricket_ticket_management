@@ -6,7 +6,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql)](https://postgresql.org)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com)
 
-CricketTix is a next-generation cricket ticketing platform that revolutionizes how fans experience cricket matches. Built with cutting-edge technology, it combines traditional ticketing with modern features like live scores, loyalty rewards, weather forecasts, smart seat recommendations, and premium experiences.
+CricketTix is a next-generation cricket ticketing platform that revolutionizes how fans experience cricket matches. Built with cutting-edge technology, it combines traditional ticketing with modern features like live scores, loyalty rewards, weather forecasts, smart seat recommendations, and premium experiences.This project was our Second-year dbms project,Implemented as a fundational step in our learning joureny.
 
 ---
 
@@ -36,9 +36,8 @@ CricketTix is a next-generation cricket ticketing platform that revolutionizes h
 ---
 ## 🚀 Live Demo
 
-🌐 **Live video**: [click here to watch](https://your-demo-url.com)
-
-## 🖼️ Screenshots outputs are:
+🌐 **Live video**: [click here to watch](https://drive.google.com/file/d/15AAF1ic2W0d5k2iKRcfWkU8xulglvVDT/view?usp=drivesdk)
+🖼️ **Screenshots outputs are:**
 - home pages
 ![homepages](2025-06-24.png)
 - login
@@ -185,16 +184,13 @@ This project was developed by:
 
 1. **Fork** the repository
 2. **Create a branch**  
-   ```bash
    git checkout -b feature/your-feature
 ## 📝 License
 This project is licensed under the MIT License.
 See the LICENSE file for more information.
----
-## ⭐ Show Your Support
-If you found this project helpful or inspiring, please give it a ⭐ on GitHub!
+**⭐ Show Your Support**
+_If you found this project helpful or inspiring, please give it a ⭐ on GitHub!_
 
- - Let others discover and contribute too!🤝
 
 
 
