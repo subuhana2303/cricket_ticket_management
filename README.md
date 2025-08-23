@@ -1,12 +1,7 @@
 # 🏏 CricketTix - Premium Cricket Ticketing Platform
 
-<<<<<<< HEAD
-CricketTix is a next-generation cricket ticketing platform that revolutionizes how fans experience cricket matches. Built with cutting-edge technology, it combines traditional ticketing with modern features like live scores, loyalty rewards, weather forecasts, smart seat recommendations, and premium experiences.
-=======
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen?style=for-the-badge)](https://your-demo-url.com)  [![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)](https://python.org)  [![HTML](https://img.shields.io/badge/HTML-5-orange?style=for-the-badge&logo=html5)](https://developer.mozilla.org/en-US/docs/Web/HTML)  [![CSS](https://img.shields.io/badge/CSS-3-blue?style=for-the-badge&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)  [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  
-
 CricketTix is a next-generation cricket ticketing platform that revolutionizes how fans experience cricket matches. Built with cutting-edge technology, it combines traditional ticketing with modern features like live scores, loyalty rewards, weather forecasts, smart seat recommendations, and premium experiences.This project was our Second-year dbms project,Implemented as a fundational step in our learning joureny.
->>>>>>> 7ba94e835ff8011ce419deab157c338288dab145
+
 
 ---
 
@@ -28,21 +23,14 @@ CricketTix is a next-generation cricket ticketing platform that revolutionizes h
 
 ## 🏗️ Tech Stack
 
-<<<<<<< HEAD
 | Layer     | Technology                       |
 |-----------|----------------------------------|
 | **Backend** | Python, SQL, SQLite |
 | **Frontend** | HTML, CSS, JavaScript |
-=======
-| Layer       | Technology            |
-|-------------|-----------------------|
-| **Frontend** | HTML, CSS, JS         |
-| **Backend**  | Python Flask          |
 | **Database** | MySQL                 |
->>>>>>> 7ba94e835ff8011ce419deab157c338288dab145
 
 ---
-## 🚀 Live Demo
+## 🚀  Demo video
 
 🌐 **Live video**: [click here to watch](https://drive.google.com/file/d/15AAF1ic2W0d5k2iKRcfWkU8xulglvVDT/view?usp=drivesdk)
 
@@ -119,20 +107,6 @@ cd CricketTix
 pip install -r requirements.txt
 
 
-
-<<<<<<< HEAD
-=======
-## 🔐 Security Features
-
-- 🔑 Bcrypt Password Hashing
-- 🛡️ CSRF Protection (via Flask-WTF or manual tokens)
-- 🔐 Secure Session Management
-- 🧼 Input Validation (forms & back-end sanitization)
-- 🧍‍♂️🧍‍♀️ Role-Based Access (User / Admin)
-
----
-
->>>>>>> 7ba94e835ff8011ce419deab157c338288dab145
 ## 🔮 Future Roadmap
 
 - 💳 Stripe/PayPal Payment Gateway Integration
